@@ -1,74 +1,252 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
+import foodImage from '../../assets/images/food.jpg';
+import { Ionicons } from '@expo/vector-icons'; // Assuming using Expo
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+const HomeScreen = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}> 
+      {/* Header */}
+      <View style={styles.header}> 
+        <TouchableOpacity>
+          <Ionicons name="menu" size={24} color="black" />
+        </TouchableOpacity>
+
+        <View style={styles.deliverTo}>
+          <Text style={styles.deliverToLabel}>DELIVER TO</Text>
+          <View style={styles.locationRow}>
+            <Text style={styles.location}>Halal Lab office</Text>
+            <Ionicons name="chevron-down" size={20} color="black" />
+          </View>
+        </View>
+
+        <TouchableOpacity style={styles.cartButton}>
+          <Ionicons name="cart" size={24} color="black" />
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>2</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Greeting */}
+      <Text style={styles.greeting}>Hey Halal, Good Afternoon!</Text>
+
+      {/* Search Bar */}
+      <View style={styles.searchBar}>
+        <Ionicons name="search" size={20} color="gray" />
+        <Text style={styles.searchText}>Search dishes, restaurants</Text>
+      </View>
+
+      {/* Categories */}
+      <View style={styles.categoriesHeader}>
+        <Text style={styles.sectionTitle}>All Categories</Text>
+        <TouchableOpacity>
+          <Text style={styles.seeAll}>See All</Text>
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.categories}
+      >
+        <TouchableOpacity style={[styles.categoryPill, styles.selectedCategory]}>
+        <ImageBackground
+    source={foodImage} // Replace with your image pathProject-24\
+    style={styles.categoryBackground}
+    imageStyle={{ borderRadius: 20 }}
+      >
+          <Text style={styles.categoryText}>Food</Text>
+          </ImageBackground>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.categoryPill}>
+          <Text style={styles.categoryText}>Meat</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.categoryPill}>
+          <Text style={styles.categoryText}>Vegetables</Text>
+        </TouchableOpacity>
+      </ScrollView>
+
+      {/* Food Items */}
+      <View style={styles.exploreHeader}>
+        <Text style={styles.sectionTitle}>Explore Food</Text>
+        <TouchableOpacity>
+          <Text style={styles.seeAll}>See All</Text>
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.foodCard}>
+          <View style={styles.foodImage} />
+          <Text style={styles.foodName}>Biryani</Text>
+          <Text style={styles.foodSubtitle}>Chicken - Riche - Wings</Text>
+          <View style={styles.foodInfo}>
+            <View style={styles.rating}>
+              <Ionicons name="star" size={16} color="#FFD700" />
+              <Text style={styles.ratingText}> 4.7</Text>
+            </View>
+            <View style={styles.deliveryInfo}>
+              <Text style={styles.freeDelivery}>Free</Text>
+              <Text style={styles.deliveryTime}>20 min</Text>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  deliverTo: {
+    flex: 1,
+    marginLeft: 16,
+  },
+  deliverToLabel: {
+    fontSize: 12,
+    color: '#FF6B00',
+  },
+  locationRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  location: {
+    fontSize: 16,
+    fontWeight: '600',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  cartButton: {
+    position: 'relative',
+  },
+  badge: {
     position: 'absolute',
+    right: -8,
+    top: -8,
+    backgroundColor: '#FF6B00',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeText: {
+    color: 'white',
+    fontSize: 12,
+  },
+  greeting: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginTop: 20,
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+    padding: 12,
+    borderRadius: 10,
+    marginTop: 16,
+  },
+  searchText: {
+    marginLeft: 8,
+    color: 'gray',
+  },
+  categoriesHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 24,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  seeAll: {
+    color: '#FF6B00',
+  },
+  categories: {
+    marginTop: 12,
+  },
+  categoryPill: {
+    
+    backgroundColor: '#F5F5F5',
+    borderRadius: 20,
+    marginRight: 12,
+  },
+  selectedCategory: {
+    backgroundColor: '#FFE4CC',
+  },
+  categoryText: {
+    fontSize: 14,
+  },
+  exploreHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 24,
+  },
+  foodCard: {
+    marginTop: 16,
+  },
+  foodImage: {
+    height: 200,
+    backgroundColor: '#F5F5F5',
+    borderRadius: 12,
+  },
+  foodName: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginTop: 8,
+  },
+  foodSubtitle: {
+    color: 'gray',
+    marginTop: 4,
+  },
+  foodInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  rating: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ratingText: {
+    marginLeft: 4,
+  },
+  deliveryInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  freeDelivery: {
+    color: '#FF6B00',
+    marginRight: 12,
+  },
+  deliveryTime: {
+    color: 'gray',
+  },
+  categoryBackground: {
+    width: 150,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
+
+export default HomeScreen;
