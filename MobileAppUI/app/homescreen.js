@@ -1,9 +1,8 @@
 import React from 'react';
-import Header from '../screens/header.js';
+import Header from './screens/header.js';
 import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useRouter } from 'expo-router';
+
 const HomeScreen = () => {
-  const router = useRouter();
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
@@ -39,13 +38,13 @@ const HomeScreen = () => {
           <Text style={styles.subHeadersTxt}>Categories</Text>
         </View>
       <View style={styles.categoriesContainer}>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => router.push('../fooditems')}>
+        <TouchableOpacity style={styles.categoryBox}>
           <Text style={styles.categoryText}>🍴 Food</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => router.push('../meatItems')}>
+        <TouchableOpacity style={styles.categoryBox}>
           <Text style={styles.categoryText}>🥩 Meat</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => router.push('../partyOrders')}>
+        <TouchableOpacity style={styles.categoryBox}>
           <Text style={styles.categoryText}>📦 Orders</Text>
         </TouchableOpacity>
       </View>
