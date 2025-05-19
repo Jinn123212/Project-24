@@ -11,6 +11,9 @@ const HomeScreen = () => {
        <Header />
 
       {/* Search Bar */}
+
+<View style={styles.subContainer}>
+
       <View style={styles.searchContainer}>
         <TextInput
           placeholder="Search for hotels or dishes..."
@@ -78,6 +81,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
+      </View>
     </ScrollView>
   );
 };
@@ -86,6 +90,11 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    // padding: 16,
+  },
+  subContainer : {
     flex: 1,
     backgroundColor: '#fff',
     padding: 16,
