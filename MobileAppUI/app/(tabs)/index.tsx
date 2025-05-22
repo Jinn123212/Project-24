@@ -1,88 +1,16 @@
 import React from 'react';
 import Header from '../screens/header.js';
+import homeScreen from '../homescreen.js';
 import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 const HomeScreen = () => {
   const router = useRouter();
   return (
-    <ScrollView style={styles.container}>
-      {/* Header */}
-     
-       <Header />
+    
+       <homeScreen />
+    
 
-      {/* Search Bar */}
-
-<View style={styles.subContainer}>
-
-      <View style={styles.searchContainer}>
-        <TextInput
-          placeholder="Search for hotels or dishes..."
-          style={styles.searchInput}
-        />
-      </View>
-        <View style={styles.subHeaders}>
-          <Text style={styles.subHeadersTxt}>Locations</Text>
-        </View>
-       {/* Locations */}
-       <View style={styles.categoriesContainer}>
-        <TouchableOpacity style={styles.locationBox}>
-          <Text style={styles.locationText}>Perungalathu</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.locationBox}>
-          <Text style={styles.locationText}>Vandalur</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.locationBox}>
-          <Text style={styles.locationText}>Kolapakkam</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Categories */}
-
-      <View style={styles.subHeaders}>
-          <Text style={styles.subHeadersTxt}>Categories</Text>
-        </View>
-      <View style={styles.categoriesContainer}>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => router.push('../fooditems')}>
-          <Text style={styles.categoryText}>🍴 Food</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => router.push('../meatItems')}>
-          <Text style={styles.categoryText}>🥩 Meat</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => router.push('../partyOrders')}>
-          <Text style={styles.categoryText}>📦 Orders</Text>
-        </TouchableOpacity>
-      </View>
-
-     
-
-      {/* Best Offers */}
-      <View style={styles.offerSection}>
-        <Text style={styles.sectionTitle}>Best Offers</Text>
-
-        <View style={styles.offerCard}>
-          <View style={styles.imagePlaceholder}>
-            <Text style={styles.imageText}>Image</Text>
-          </View>
-          <View style={styles.offerContent}>
-            <Text style={styles.offerTitle}>Special Burger Combo</Text>
-            <Text style={styles.offerSubtitle}>20% off on combo meals</Text>
-            <Text style={styles.offerPrice}>$9.99</Text>
-          </View>
-        </View>
-
-        <View style={styles.offerCard}>
-          <View style={styles.imagePlaceholder}>
-            <Text style={styles.imageText}>Image</Text>
-          </View>
-          <View style={styles.offerContent}>
-            <Text style={styles.offerTitle}>Pizza Festival</Text>
-            <Text style={styles.offerSubtitle}>Buy 1 Get 1 Free</Text>
-            <Text style={styles.offerPrice}>$12.99</Text>
-          </View>
-        </View>
-      </View>
-      </View>
-    </ScrollView>
+    
   );
 };
 

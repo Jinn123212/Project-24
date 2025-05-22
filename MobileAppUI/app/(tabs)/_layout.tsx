@@ -41,9 +41,17 @@ export default function TabLayout() {
         }}
       />
        <Tabs.Screen
-        name="(stack)"
+        name="fooditems"
         options={{
           href: null,
+          
+        }}
+      />
+      <Tabs.Screen
+        name="partyOrders"
+        options={{
+          href: null,
+          
         }}
       />
     </Tabs>

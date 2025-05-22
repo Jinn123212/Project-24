@@ -10,12 +10,18 @@ const HomeScreen = () => {
        <Header />
 
       {/* Search Bar */}
-      <View style={styles.searchContainer}>
+
+      <View style={styles.addContainer}>
+      
+        </View>
+ <View style={styles.searchContainer}>
         <TextInput
           placeholder="Search for hotels or dishes..."
           style={styles.searchInput}
         />
       </View>
+      
+     
         <View style={styles.subHeaders}>
           <Text style={styles.subHeadersTxt}>Locations</Text>
         </View>
@@ -88,6 +94,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 16,
+  },
+  addContainer : {
+    backgroundColor : 'blue',
+    height : 500,
   },
   header: {
     flexDirection: 'row',
